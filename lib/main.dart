@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+// TODO:
+// 1. Add sections with working history
+// ==== The following sections require authentication ====
+// 2. Download resume
+// 3. Book an interview - should show the calendar and availability time
+//    3.1. As soon as confirmed should send calendar invitation
+// 4. Add analytics
+
 void main() => runApp(App());
 
 class App extends StatelessWidget {
@@ -10,6 +18,7 @@ class App extends StatelessWidget {
         backgroundColor: Styles.primaryColor,
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Avatar(),
               WhoAmI(),
@@ -84,7 +93,11 @@ class Delimiter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('-'),
+      child: SizedBox(
+        height: 20,
+        width: 150,
+        child: Divider(color: Styles.primaryColorLigth),
+      ),
     );
   }
 }
@@ -95,48 +108,38 @@ class MyContacts extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-          Container(
-            color: Styles.primaryColorText,
+          Card(
             margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-            padding: EdgeInsets.all(10),
-            child: Row(
-              children: <Widget>[
-                Icon(
-                  Icons.phone,
-                  color: Styles.primaryColor,
+            child: ListTile(
+              leading: Icon(
+                Icons.phone,
+                color: Styles.primaryColor,
+              ),
+              title: Text(
+                'Phone Number',
+                style: TextStyle(
+                  color: Styles.primaryColorDark,
+                  fontFamily: 'Montserrat',
+                  fontSize: 20,
                 ),
-                SizedBox(width: 10),
-                Text(
-                  'Phone Number',
-                  style: TextStyle(
-                    color: Styles.primaryColorDark,
-                    fontFamily: 'Montserrat',
-                    fontSize: 20,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-          Container(
-            color: Styles.primaryColorText,
+          Card(
             margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-            padding: EdgeInsets.all(10),
-            child: Row(
-              children: <Widget>[
-                Icon(
-                  Icons.email,
-                  color: Styles.primaryColor,
+            child: ListTile(
+              leading: Icon(
+                Icons.email,
+                color: Styles.primaryColor,
+              ),
+              title: Text(
+                'Email',
+                style: TextStyle(
+                  color: Styles.primaryColorDark,
+                  fontFamily: 'Montserrat',
+                  fontSize: 20,
                 ),
-                SizedBox(width: 10),
-                Text(
-                  'Email',
-                  style: TextStyle(
-                    color: Styles.primaryColorDark,
-                    fontFamily: 'Montserrat',
-                    fontSize: 20,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ],
